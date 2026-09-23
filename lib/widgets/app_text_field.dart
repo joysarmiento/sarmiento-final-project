@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../theme/app_theme.dart';
 
-/// The app's single text field style: a pill-shaped, filled field with no
-/// visible border, used on Log in, Sign up, Reset Password, Add Story, and
-/// Add Memory — see Design System, section D.
-///
-/// [label] is what's shown as placeholder text when [hint] is omitted (the
-/// Log in / Sign up screens work this way: the field itself is the label).
-/// Pass both when a screen shows a separate heading above the field *and*
-/// example text inside it (the Reset Password screen does this) — compose
-/// the heading as your own Text widget above this one in that case.
 class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,
@@ -40,16 +32,24 @@ class AppTextField extends StatelessWidget {
         obscureText: obscureText,
         keyboardType: keyboardType,
         validator: validator,
-        style: const TextStyle(color: AppTheme.onSurface, fontSize: 16),
+        style: GoogleFonts.montserrat(
+          color: AppTheme.onSurface,
+          fontSize: 15,
+          fontWeight: FontWeight.w600, // semibold
+        ),
         decoration: InputDecoration(
           hintText: hint ?? label,
-          hintStyle: TextStyle(color: AppTheme.onSurface.withOpacity(0.65)),
+          hintStyle: GoogleFonts.montserrat(
+            color: AppTheme.onSurface.withValues(alpha: 0.75),
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
           filled: true,
           fillColor: AppTheme.surfaceVariant,
           suffixIcon: suffixIcon,
           contentPadding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 18,
+            horizontal: 22,
+            vertical: 15,
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(28),

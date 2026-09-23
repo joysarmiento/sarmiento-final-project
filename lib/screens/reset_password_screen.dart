@@ -4,6 +4,7 @@ import '../services/supabase_service.dart';
 import '../theme/app_theme.dart';
 import '../widgets/app_text_field.dart';
 import '../widgets/primary_button.dart';
+import '../widgets/app_back_button.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
@@ -29,8 +30,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _isLoading = true);
     try {
-      await SupabaseService.instance
-          .resetPasswordForEmail(_emailController.text.trim());
+      await SupabaseService.instance.resetPasswordForEmail(
+        _emailController.text.trim(),
+      );
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Check your email for a reset link.')),
@@ -38,9 +40,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       Navigator.of(context).pop();
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Could not send reset link: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Could not send reset link: $e')));
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -60,25 +62,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: AppTheme.spaceMd),
-                TextButton.icon(
-                  onPressed: () => Navigator.of(context).pop(),
-                  icon: const Icon(Icons.chevron_left, color: AppTheme.error),
-                  label: const Text(
-                    'Back',
-                    style: TextStyle(color: AppTheme.error, fontWeight: FontWeight.w600),
-                  ),
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    alignment: Alignment.centerLeft,
-                  ),
-                ),
+                const AppBackButton(),
                 const SizedBox(height: AppTheme.spaceMd),
                 Center(
                   child: Text(
                     'Reset Password',
                     textAlign: TextAlign.center,
-                    style: theme.textTheme.headlineSmall
-                        ?.copyWith(color: AppTheme.secondary),
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      color: AppTheme.primary,
+                    ),
                   ),
                 ),
                 const SizedBox(height: AppTheme.spaceSm),
@@ -86,15 +78,16 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   child: Text(
                     'Enter your email so we can send you the password reset link',
                     textAlign: TextAlign.center,
-                    style: theme.textTheme.bodyMedium?.copyWith(fontSize: 15),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: AppTheme.onSurface,
+                    ),
                   ),
                 ),
                 const SizedBox(height: AppTheme.spaceSectionGap),
                 Text(
                   'Email',
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: AppTheme.secondary,
-                    fontWeight: FontWeight.bold,
+                    color: AppTheme.onSurface.withValues(alpha: 0.75),
                   ),
                 ),
                 const SizedBox(height: AppTheme.spaceSm),
@@ -125,7 +118,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     onTap: () => Navigator.of(context).pop(),
                     child: RichText(
                       text: TextSpan(
-                        style: theme.textTheme.bodyMedium?.copyWith(fontSize: 15),
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          fontSize: 15,
+                        ),
                         children: const [
                           TextSpan(text: 'Already Registered? '),
                           TextSpan(

@@ -48,9 +48,9 @@ class _SignupScreenState extends State<SignupScreen> {
       Navigator.of(context).pop();
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Could not sign up: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Could not sign up: $e')));
     } finally {
       if (mounted) setState(() => _isLoading = false);
     }
@@ -69,27 +69,25 @@ class _SignupScreenState extends State<SignupScreen> {
             child: Column(
               children: [
                 const SizedBox(height: AppTheme.spaceSectionGap),
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: AppTheme.secondary.withOpacity(0.3),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.auto_stories,
-                    size: 60,
+                Image.asset(
+                  'docs/assets/images/logo.png',
+                  width: 140,
+                  height: 140,
+                ),
+                const SizedBox(height: AppTheme.spaceXs),
+                Text(
+                  'Create Your Story Shelf',
+                  style: theme.textTheme.displayMedium?.copyWith(
                     color: AppTheme.primary,
                   ),
                 ),
-                const SizedBox(height: AppTheme.spaceMd),
-                Text(
-                  'Sign up',
-                  style:
-                      theme.textTheme.headlineSmall?.copyWith(color: AppTheme.primary),
-                ),
                 const SizedBox(height: AppTheme.spaceXs),
-                Text('Sign up to continue', style: theme.textTheme.bodyMedium),
+                Text(
+                  'Start keeping track of the stories you love.',
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
                 const SizedBox(height: AppTheme.spaceSectionGap),
                 AppTextField(
                   label: 'Name',
@@ -123,7 +121,9 @@ class _SignupScreenState extends State<SignupScreen> {
                   controller: _passwordController,
                   suffixIcon: IconButton(
                     icon: Icon(
-                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                      _obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                       color: AppTheme.onSurface,
                     ),
                     onPressed: () =>
@@ -138,7 +138,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: AppTheme.spaceSectionGap),
                 PrimaryButton(
-                  label: 'Sign up',
+                  label: 'Start My Shelf',
                   isLoading: _isLoading,
                   onPressed: _handleSignup,
                 ),
@@ -149,7 +149,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     onTap: () => Navigator.of(context).pop(),
                     child: RichText(
                       text: TextSpan(
-                        style: theme.textTheme.bodyMedium?.copyWith(fontSize: 15),
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          fontSize: 15,
+                        ),
                         children: const [
                           TextSpan(text: 'Already Registered? '),
                           TextSpan(

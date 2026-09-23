@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../services/supabase_service.dart';
 import '../theme/app_theme.dart';
@@ -6,8 +7,6 @@ import '../widgets/app_text_field.dart';
 import '../widgets/primary_button.dart';
 import 'reset_password_screen.dart';
 import 'signup_screen.dart';
-
-// import 'home_screen.dart'; // uncomment once home_screen.dart exists
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -65,28 +64,25 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 const SizedBox(height: AppTheme.spaceSectionGap),
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: AppTheme.secondary.withOpacity(0.3),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.auto_stories,
-                    size: 60,
-                    color: AppTheme.primary,
-                  ),
+                Image.asset(
+                  'docs/assets/images/logo.png',
+                  width: 140,
+                  height: 140,
                 ),
-                const SizedBox(height: AppTheme.spaceMd),
+                const SizedBox(height: AppTheme.spaceXs),
                 Text(
-                  'Log in',
-                  style: theme.textTheme.headlineSmall?.copyWith(
+                  'Welcome Back ♡',
+                  style: theme.textTheme.displayMedium?.copyWith(
                     color: AppTheme.primary,
                   ),
                 ),
                 const SizedBox(height: AppTheme.spaceXs),
-                Text('Login to continue', style: theme.textTheme.bodyMedium),
+                Text(
+                  'Your stories are waiting for you.',
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
                 const SizedBox(height: AppTheme.spaceSectionGap),
                 AppTextField(
                   label: 'Email / Username',
@@ -133,19 +129,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                     style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                    child: const Text(
+                    child: Text(
                       'Forgot password?',
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
                         color: AppTheme.onSurface,
                         decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w600, // semibold
                       ),
                     ),
                   ),
                 ),
                 const SizedBox(height: AppTheme.spaceMd),
                 PrimaryButton(
-                  label: 'Log in',
+                  label: 'Open My Shelf',
                   isLoading: _isLoading,
                   onPressed: _handleLogin,
                 ),
@@ -164,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontSize: 15,
                         ),
                         children: const [
-                          TextSpan(text: "Don't have an account? "),
+                          TextSpan(text: "New to Story Shelf? "),
                           TextSpan(
                             text: 'Sign up.',
                             style: TextStyle(

@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-/// Story Shelf's design tokens, converted straight from the project's
-/// Design System document: the color palette, the type scale, and the
-/// spacing rule (4px base unit).
-///
-/// Widgets reference these constants directly (AppTheme.primary, etc.)
-/// rather than Theme.of(context).colorScheme.xyz, because a couple of the
-/// named roles here (surfaceVariant in particular) don't map cleanly to a
-/// single stable ColorScheme field name across Flutter versions.
 class AppTheme {
   AppTheme._();
 
-  // --- Color palette (Design System, section A) -----------------------
+  // Color palette
   static const Color primary = Color(0xFF943B41); // buttons, active states
   static const Color onPrimary = Color(0xFFFFFFFF); // text/icons on primary
   static const Color secondary = Color(0xFF9DC3D8); // nav bar, chips, cards
@@ -20,7 +13,8 @@ class AppTheme {
   static const Color onSurface = Color(0xFF66769A); // body text
   static const Color error = Color(0xFFB02D35); // headings, tags, destructive
 
-  // --- Spacing rule (Design System, section C) -------------------------
+  // Spacing rules
+  static const double spaceXxs = 2;
   static const double spaceXs = 4;
   static const double spaceSm = 8;
   static const double spaceMd = 16;
@@ -41,28 +35,31 @@ class AppTheme {
         error: error,
         onError: onPrimary,
       ),
-      // Type scale (Design System, section B). Only 4 styles are defined,
-      // so screens should stick to these four slots rather than reaching
-      // for other TextTheme members.
-      textTheme: const TextTheme(
-        displayMedium: TextStyle(
-          fontSize: 56,
-          fontWeight: FontWeight.bold,
+
+      textTheme: TextTheme(
+        displayMedium: GoogleFonts.montserrat(
+          fontSize: 26,
+          fontWeight: FontWeight.w700, // bold
           color: primary,
         ),
-        headlineSmall: TextStyle(
-          fontSize: 34,
-          fontWeight: FontWeight.bold,
-          color: primary,
-        ),
-        bodyMedium: TextStyle(
+        headlineSmall: GoogleFonts.montserrat(
           fontSize: 20,
-          fontWeight: FontWeight.normal,
+          fontWeight: FontWeight.w700, // bold
+          color: primary,
+        ),
+        bodyMedium: GoogleFonts.montserrat(
+          fontSize: 15,
+          fontWeight: FontWeight.w600, // medium
           color: onSurface,
         ),
-        labelSmall: TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
+        bodySmall: GoogleFonts.montserrat(
+          fontSize: 13,
+          fontWeight: FontWeight.w600, // medium
+          color: onSurface,
+        ),
+        labelSmall: GoogleFonts.montserrat(
+          fontSize: 10,
+          fontWeight: FontWeight.w500, // medium
           color: onSurface,
         ),
       ),

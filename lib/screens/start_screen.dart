@@ -18,26 +18,25 @@ class StartScreen extends StatelessWidget {
           child: Column(
             children: [
               const Spacer(flex: 3),
-              // TODO: swap this stand-in for the real Story Shelf logo.
-              // Export it from Figma/Canva to assets/images/logo.png, list
-              // it under pubspec.yaml's flutter: assets:, and replace this
-              // Container with Image.asset('assets/images/logo.png').
-              Image.asset('assets/images/logo.png'),
-              const SizedBox(height: AppTheme.spaceMd),
+              Image.asset(
+                'docs/assets/images/logo.png',
+                width: 170,
+                height: 170,
+              ),
+              const SizedBox(height: AppTheme.spaceXxs),
               FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text(
-                  'Story Shelf',
-                  style: theme.textTheme.displayMedium?.copyWith(
-                    fontStyle: FontStyle.italic, // stand-in for the
-                  ), // script font used in the mockup logo
+                child: Image.asset(
+                  'docs/assets/images/story-shelf-wordmark.png',
+                  width:
+                      250, // matches the old displayMedium font size// script font used in the mockup logo
                 ),
               ),
-              const SizedBox(height: AppTheme.spaceSm),
+              const SizedBox(height: AppTheme.spaceXxs),
               Text(
                 'Your stories. Your memories.',
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               const Spacer(flex: 5),

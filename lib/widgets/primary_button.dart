@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../theme/app_theme.dart';
 
-/// The app's single button style: a full-width, pill-shaped, filled button.
-///
-/// Appears on Start, Log in, Sign up, Reset Password, Story Details
-/// (Update), Add Story (Save Story), and Add Memory (Save Memory) — see
-/// Design System, section D.
-///
-/// [isLoading] is a small addition beyond the spec'd (label, onPressed)
-/// signature: it disables the button and swaps the label for a spinner
-/// while an async call (sign in, sign up, ...) is in flight.
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,
@@ -33,7 +25,7 @@ class PrimaryButton extends StatelessWidget {
         style: FilledButton.styleFrom(
           backgroundColor: AppTheme.primary,
           foregroundColor: AppTheme.onPrimary,
-          disabledBackgroundColor: AppTheme.primary.withOpacity(0.6),
+          disabledBackgroundColor: AppTheme.primary.withValues(alpha: 0.6),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(28),
           ),
@@ -49,9 +41,9 @@ class PrimaryButton extends StatelessWidget {
               )
             : Text(
                 label,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
+                style: GoogleFonts.montserrat(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600, // semibold
                 ),
               ),
       ),
