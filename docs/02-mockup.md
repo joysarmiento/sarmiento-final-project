@@ -10,7 +10,8 @@ screen.
 
 _(Embed your mockup here once it is in `assets/`.)_
 ### 01 Start
-![01 Start](assets/mock-up_screens/01%20Start.png)
+![01 Start](assets/mock-up_screens/01Start.png)
+
 ### 02 Log in
 
 ### 03 Reset Password
