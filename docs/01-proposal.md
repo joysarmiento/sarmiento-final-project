@@ -64,5 +64,4 @@ Having too many separate screens can increase the amount of repeated code and na
 - **September 20, 2026** – The screen plan changed from 12 screens to 16 screens. New screens were added for Start, Reset Password, Edit Story, Memory Details, Edit Memory, and Edit Profile, while Story Details was simplified.
 - **September 20, 2026** – Supabase was selected as the storage solution, with Profile, Story, and Memory tables to support the relationships between users, stories, and multiple memories.
 - **September 20, 2026** – Project scope was added as a second major risk alongside the existing risk of correctly linking stories and memories.
-- **September 22, 2026** – Coding started for the first four screens: Start, Login, Reset Password, and Sign Up.
-
+- **September 22, 2026** – Coding started for the first four screens: Start, Login, Reset Password, and Sign Up. Other files needed was also accomplished.
