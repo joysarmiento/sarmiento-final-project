@@ -9,7 +9,9 @@ Put your mockup images or PDF in `assets/` and embed them here, one heading per
 screen.
 
 _(Embed your mockup here once it is in `assets/`.)_
+### 01 Start
 
+### 02 Log in
 | ### 01 Start | ### 02 Log in | ### 03 Reset Password | ### 04 Sign up |
 |---|---|---|---:|
 
